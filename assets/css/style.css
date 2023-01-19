@@ -563,7 +563,7 @@ p {
 
 #about .div-img-bg {
   padding-bottom: 30px;
-  border: 20px solid #b8a07e;
+  border: 20px solid #979796;
 }
 
 #about .div-img-bg .about-img img {
@@ -616,7 +616,7 @@ p {
 
 .services-block i {
   font-size: 44px;
-  color: #b8a07e;
+  color: #979796;
   line-height: 44px;
 }
 
@@ -630,11 +630,11 @@ p {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #b8a07e;
+  border: 1px solid #797979;
 }
 
 .services-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #b8a07e;
+  background-color:#979796;
 }
 
 /*--------------------------------------------------------------
