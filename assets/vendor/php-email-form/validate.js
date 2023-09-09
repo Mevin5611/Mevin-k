@@ -1,9 +1,67 @@
-/**
-* PHP Email Form Validation - v3.5
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
-(function () {
+
+
+let forms = document.querySelectorAll('.php-email-form');
+let timeout;
+
+function relod() {
+  timeout = setTimeout(vanish, 3000);
+}
+
+function vanish(){
+  document.getElementById('success').classList.remove('d-block');
+}
+
+  forms.forEach( function (e) {
+    e.addEventListener('submit', function sendEmail(e) {
+      e.preventDefault();
+      let thisForm = this;
+      Email.send({
+        SecureToken : "59abed73-647d-4a5d-88fd-d79eedb028c5",
+        To : 'mevinmevi88@gmail.com',
+        From :"smartlabverifysample@gmail.com",
+        Subject : "New contact form Enquiry",
+        Body : "Name :" + document.getElementById("name").value
+            + "<br> Email :" + document.getElementById("email").value
+            + "<br> Subject :" + document.getElementById("subject").value
+            + "<br> Message :" + document.getElementById("message").value
+        }).then((response)=>{
+        console.log(response);
+        if(response.trim()=='OK'){
+          document.getElementById('success').classList.add('d-block');
+          thisForm.reset();
+          relod();
+          
+        }else{
+          document.getElementById('fail').classList.add('d-block');
+        }
+          
+        
+        });
+    })
+  })
+
+
+
+/* function sendEmail(){
+  Email.send({
+SecureToken : "59abed73-647d-4a5d-88fd-d79eedb028c5",
+To : 'mevinmevi88@gmail.com',
+From :"smartlabverifysample@gmail.com",
+Subject : "New contact form Enquiry",
+Body : "Name :" + document.getElementById("name").value
+    + "<br> Email :" + document.getElementById("email").value
+    + "<br> Subject :" + document.getElementById("subject").value
+    + "<br> Message :" + document.getElementById("message").value
+}).then((response)=>{
+console.log(response);
+
+});
+
+} */
+
+/* ---------------------- */
+
+/* (function () {
   "use strict";
 
   let forms = document.querySelectorAll('.php-email-form');
@@ -34,7 +92,7 @@
               grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
               .then(token => {
                 formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
+                sendEmail(thisForm, action, formData);
               })
             } catch(error) {
               displayError(thisForm, error)
@@ -44,10 +102,12 @@
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-        php_email_form_submit(thisForm, action, formData);
+        sendEmail(thisForm, action, formData);
       }
     });
   });
+
+
 
   function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
@@ -79,3 +139,5 @@
   }
 
 })();
+ */
+
