@@ -14,31 +14,36 @@ function vanish(){
   forms.forEach( function (e) {
     e.addEventListener('submit', function sendEmail(e) {
       e.preventDefault();
+      loaddelay=setTimeout(sendenq,3000);
       let thisForm = this;
-      Email.send({
-        SecureToken : "59abed73-647d-4a5d-88fd-d79eedb028c5",
-        To : 'mevinmevi88@gmail.com',
-        From :"smartlabverifysample@gmail.com",
-        Subject : "New contact form Enquiry",
-        Body : "Name :" + document.getElementById("name").value
-            + "<br> Email :" + document.getElementById("email").value
-            + "<br> Subject :" + document.getElementById("subject").value
-            + "<br> Message :" + document.getElementById("message").value
-        }).then((response)=>{
-        console.log(response);
-        if(response.trim()=='OK'){
-          document.getElementById('success').classList.add('d-block');
-          thisForm.reset();
-          relod();
+      document.getElementById('loading').classList.add('d-block');
+      function sendenq(){
+        document.getElementById('loading').classList.remove('d-block');
+        Email.send({
+          SecureToken : "59abed73-647d-4a5d-88fd-d79eedb028c5",
+          To : 'mevinmevi88@gmail.com',
+          From :"smartlabverifysample@gmail.com",
+          Subject : "New contact form Enquiry",
+          Body : "Name :" + document.getElementById("name").value
+              + "<br> Email :" + document.getElementById("email").value
+              + "<br> Subject :" + document.getElementById("subject").value
+              + "<br> Message :" + document.getElementById("message").value
+          }).then((response)=>{
+          console.log(response);
+          if(response.trim()=='OK'){
+            document.getElementById('success').classList.add('d-block');
+            thisForm.reset();
+            relod();
+            
+          }else{
+            document.getElementById('fail').classList.add('d-block');
+          }
+            
           
-        }else{
-          document.getElementById('fail').classList.add('d-block');
-        }
-          
-        
-        });
-    })
-  })
+          });
+      }
+    });
+  });
 
 
 

@@ -208,7 +208,7 @@
                       
                 <div class="col-lg-12">
                   <div class="cmt padDiv">
-                    <form id="comment-form" class="comment-form" onsubmit="sendMsg(); reset(); return false;" method="post" action="" role="form">
+                    <form id="comment-form" class="comment-form" onsubmit="sendMsg(); reset(); reload1(); return false;" method="post" action="" role="form">
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="form-group">
@@ -221,6 +221,11 @@
                           <div class="form-group">
                             <textarea id="form_message" name="message" class="form-control" placeholder="Message *" style="height: 200px;" required="required"></textarea>
                           </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="loading" id="loading1">Loading</div>
+                          <div class="error-message text-center" id="fail1">Oops Something went Wrong !!</div>
+                          <div class="sent-message" id="success1">Your message has been sent. Thank you!</div>
                         </div>
                         <div class="col-lg-12">
                           <input type="submit" class="btnn btn-defeault btn-send" value="Send message">
@@ -274,30 +279,8 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="assets/vendor/msg-form/msgform.js"></script>
   
-  <script> 
-    let msgform = document.querySelectorAll('.comment-form');
-  msgform.forEach(function(e){
-    e.addEventListener('submit',function sendMsg(e){
-      e.preventDefault();
-      Email.send({
-      SecureToken : "59abed73-647d-4a5d-88fd-d79eedb028c5",
-      To : 'mevinmevi88@gmail.com',
-      From :"smartlabverifysample@gmail.com",
-      Subject : "New Feedback message",
-      Body : "Name :" + document.getElementById("form_name").value
-            + "<br> Message :" + document.getElementById("form_message").value
-     }).then((response)=>{
-     alert(response);
-
-     });
-        });
-           });
-
-
-
-
-  </script>
   
 
 </body>
