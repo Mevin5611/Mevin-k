@@ -559,7 +559,7 @@ p {
 
 #about .div-img-bg {
   padding-bottom: 30px;
-  border: 20px solid #979796;
+  border: 20px solid #bac3a8;
 }
 
 #about .div-img-bg .about-img img {
@@ -1595,3 +1595,4 @@ blockquote {
   -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
 }
+
